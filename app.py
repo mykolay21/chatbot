@@ -14,7 +14,7 @@ client = AzureOpenAI(
     api_key=os.environ["AZURE_OPENAI_API_KEY"],
     api_version="2025-04-01-preview",
     azure_endpoint=os.environ["AZURE_OPENAI_ENDPOINT"],
-    timeout=60  # ← FIX
+    timeout=60
 )
 
 
