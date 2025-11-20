@@ -47,6 +47,7 @@ if prompt:
     with st.chat_message("user"):
         st.markdown(prompt)
 
+
     # Calling the LLM API to get a response. We use the same messages for UI and for LLM, but we can create a separate list if needed.
     response = client.chat.completions.create(
         model=MODEL,
