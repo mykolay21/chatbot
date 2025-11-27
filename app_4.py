@@ -5,6 +5,8 @@ from psycopg2.extras import RealDictCursor
 from dotenv import load_dotenv
 import os
 import json
+import pandas as pd
+import traceback
 
 load_dotenv()
 
@@ -124,14 +126,11 @@ if prompt := st.chat_input("What would you like to know from the database?"):
                             result = "Query executed successfully. No rows returned."
                         else:
                             # Format nicely
-                            import pandas as pd
-
                             df = pd.DataFrame(rows, columns=columns)
                             result = f"Found {len(df)} rows:\n\n{df.head(100).to_markdown(index=False)}"
                             if len(df) > 100:
                                 result += f"\n\n... and {len(df) - 100} more rows (showing first 100)"
                     except Exception as e:
-                        import traceback
                         error_text = traceback.format_exc()
                         st.error(error_text)  # shows real error in UI
                         result = "SQL execution failed."
