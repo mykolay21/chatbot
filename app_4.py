@@ -18,7 +18,6 @@ client = AzureOpenAI(
     timeout=60
 )
 
-# deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT")
 MODEL = "gpt-4o"
 
 
@@ -143,7 +142,6 @@ if prompt := st.chat_input("What would you like to know from the database?"):
                             conn.close()
 
                 # Append tool result and get final answer
-                # st.session_state.messages.append(message)  # LLM's function call
                 # Convert message to dict before appending
                 st.session_state.messages.append({
                     "role": message.role,
