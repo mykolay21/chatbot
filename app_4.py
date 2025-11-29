@@ -44,8 +44,19 @@ st.caption("Ask questions about your PostgreSQL database in plain English")
 
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "system",
-         "content": "You are a helpful SQL assistant. Use the provided function to query the database."}
+        {
+            "role": "system",
+            "content": (
+                "You are a helpful SQL assistant. Use the provided function to query the database. "
+                "Available schemas: public, analytics"
+                "Available tables:\n"
+                "  customers(customer_id, name, country)\n"
+                "  products(product_id, name, category, price)\n"
+                "  orders(order_id, customer_id, order_date, total_amount)\n"
+                "  order_items(order_id, product_id, quantity)\n"
+                "Important rule: DML operations such as INSERT, UPDATE, or DELETE are prohibited."
+            )
+        }
     ]
 
 # Display chat history
